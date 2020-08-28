@@ -8,10 +8,9 @@
   });
 }
 
-// Q2. make an array out of a string ----------------------------
+// Q2. make an array out of a string
 {
   const fruits = "🍎, 🥝, 🍌, 🍒";
-  const array = [fruits];
   console.log(fruits);
 }
 
@@ -35,8 +34,6 @@
   console.log(array);
 }
 
-console.clear();
-
 class Student {
   constructor(name, age, enrolled, score) {
     this.name = name;
@@ -48,22 +45,75 @@ class Student {
 const students = [
   new Student("A", 29, true, 45),
   new Student("B", 28, false, 80),
-  new Student("C", 30, true, 90), ///////////
+  new Student("C", 30, true, 90),
   new Student("D", 40, false, 66),
   new Student("E", 18, true, 88),
 ];
 
-// Q5. find a student with the score 90 -------------------------
+// Q5. find a student with the score 90
 {
-  console.log(students);
+  function findScore(score) {
+    const theone = [];
+    for (let i = 0; i < students.length; i++) {
+      theone[i] = students[i].score;
+    }
+    const found = (element) => element === score;
+    console.log(students[theone.findIndex(found)].name);
+  }
+  findScore(90);
 }
 
 // Q6. make an array of enrolled students
 {
-  // students.forEach((element) => console.log(element));
+  const theone = [];
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].enrolled === true) {
+      theone[i] = students[i].name;
+    }
+  }
+  const filtered = theone.filter(function (el) {
+    return el != null;
+  });
+  console.log(filtered);
 }
 
 // Q7. make an array containing only the students' scores
 // result should be: [45, 80, 90, 66, 88]
 {
+  const theone = [];
+  for (let i = 0; i < students.length; i++) {
+    theone[i] = students[i].score;
+  }
+  console.log(theone);
+}
+
+// Q8. check if there is a student with the score lower than 50
+{
+  function findScore(score) {
+    for (let i = 0; i < students.length; i++) {
+      if (students[i].score < score) {
+        console.log(students[i].name);
+      }
+    }
+  }
+  findScore(50);
+}
+
+// Q9. compute students' average score
+{
+  var average = 0;
+  for (let i = 0; i < students.length; i++) {
+    average = average + students[i].score;
+  }
+  console.log(average / students.length);
+}
+
+// Q10. make a string containing all the scores
+// result should be: '45, 80, 90, 66, 88'
+{
+  let string = "";
+  for (let i = 0; i < students.length; i++) {
+    string = `${string} ${students[i].score}`;
+  }
+  console.log(string);
 }
